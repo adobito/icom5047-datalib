@@ -1,0 +1,13 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+	compile 'org.scala-lang:scala-library:2.10.3'
+	testCompile 'junit:junit:4.10'
+	testCompile 'org.scalatest:scalatest_2.10:2.1.+'
+}
