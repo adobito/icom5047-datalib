@@ -9,7 +9,7 @@ import com.aerobal.data.processing.exceptions.EmptyListException;
 import java.security.InvalidParameterException;
 import org.junit.After;
 
-class DataProcessingTest {
+class DataProcessingTest extends AssertionsForJUnit {
 	val list: List[Double] = List( 4.5,2.3,-1.2,12,-13.4,22, 17.98433, -45.34234);
 	val negativeList: List[Double] = List(-12.4, -54.6, -34.5, -34.87676, -123.45, -3);
 	val positiveList: List[Double] = List(34.2, 7, 56.7655, 12.546757567, 7.8456456, 23.54364565, 77.345334);
