@@ -1,10 +1,22 @@
-apply plugin: 'java'
+apply plugin: 'scala'
 apply plugin: 'eclipse'
 
 repositories {
     mavenCentral()
 }
 
+sourceSets {
+    main {
+        scala {
+            srcDirs = ['src/scala']
+        }
+    }
+    test {
+        scala {
+            srcDirs = ['test/scala']
+        }
+    }
+}
 
 dependencies {
 	compile 'org.scala-lang:scala-library:2.10.3'
@@ -12,3 +24,10 @@ dependencies {
 	testCompile 'org.scalatest:scalatest_2.10:2.1.+'
 }
 
+test {
+	useJUnit()
+	testLogging {
+		// Show that tests are run in the command-line output
+		events 'started', 'passed'
+	}
+}	
