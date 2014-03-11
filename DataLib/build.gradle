@@ -5,24 +5,15 @@ repositories {
     mavenCentral()
 }
 
-sourceSets {
-    main {
-        scala {
-            srcDirs = ['src/scala']
-        }
-    }
-    test {
-        scala {
-            srcDirs = ['test/scala']
-        }
-    }
-}
+
 
 dependencies {
 	compile 'org.scala-lang:scala-library:2.10.3'
 	compile 'com.google.code.gson:gson:2.2.4'
+	compile "com.google.http-client:google-http-client:1.17.0-rc"
 	testCompile 'junit:junit:4.10'
 	testCompile 'org.scalatest:scalatest_2.10:2.1.+'
+	testCompile 'org.mockito:mockito-all:1.9.5'
 }
 
 test {

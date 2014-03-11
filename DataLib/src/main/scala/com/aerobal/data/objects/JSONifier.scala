@@ -1,11 +1,12 @@
 package com.aerobal.data.objects
 
 import com.google.gson.GsonBuilder
+import com.google.gson.Gson
 
 trait JSONifier {
 
+	
   override def toString: String = {
-    val gson = new GsonBuilder().create();
-    gson.toJson(this)
+    new Gson().toJson(this);
   }
 }
