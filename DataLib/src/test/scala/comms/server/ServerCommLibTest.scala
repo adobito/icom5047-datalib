@@ -1,11 +1,13 @@
-package com.aerobal.server.comm
+package com.aerobal.comms.server
 
 import scala.collection.mutable.HashMap
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.scalatest.junit.AssertionsForJUnit
+
 import com.aerobal.data.objects.User
+
 import java.security.InvalidParameterException
 
 class ServerCommLibTest extends AssertionsForJUnit {

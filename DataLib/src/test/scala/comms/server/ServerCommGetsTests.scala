@@ -1,12 +1,13 @@
-package com.aerobal.server.comm
+package com.aerobal.comms.server
+
+import java.security.InvalidParameterException
 
 import scala.collection.mutable.HashMap
+
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.scalatest.junit.AssertionsForJUnit
-import com.aerobal.data.objects.User
-import java.security.InvalidParameterException
 
 class ServerCommGetsTest extends AssertionsForJUnit {
   	private val USER_ID_STRING = "userId";
@@ -134,7 +135,7 @@ class ServerCommGetsTest extends AssertionsForJUnit {
 		assertEquals(id.toString, map(key));
 	}
 	@Test def testMakeMeasurementsGetMap() {
-	  		val id = 867;
+	  		val id = 78734654;
 		val key = RUN_ID_STRING;
 		val func: Int => Map[String,String] = ServerCommGets.makeMeasurementsGetMap;
 		val map = func(id);
