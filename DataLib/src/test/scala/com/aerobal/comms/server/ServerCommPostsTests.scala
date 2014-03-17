@@ -30,27 +30,27 @@ class ServerCommPostsTest extends AssertionsForJUnit {
 	private val TIMESTAMP_STRING = "timestamp";
 
 	@Test def testMakeNewUserPostContent() {
-		val func: (String,String,String,String) => Map[String,String] = ServerCommPosts.makeNewUserPostContent;
+		val func: (String,String,String,String) => Map[String,String] = ServerCommPosts.makeNewUserPostMap;
 		val username = "testname13432";
 		val name = "John Doe";
 		val email = "email@amd.er";
 		val password = "2gfh546y";
-		val map = func(username, name, email, password)
+		val map = func(username, name, email, password);
 		assertEquals(4, map.size);
 		assertEquals(username, map(USER_USERNAME_STRING));
 		assertEquals(name, map(USER_NAME_STRING));
 		assertEquals(email, map(USER_EMAIL_STRING));
 		assertEquals(password, map(USER_PASSWORD_STRING));
-		
+
 	}
 	@Test def testMakeNewSessionPostContent() {
-		val func: (Int,String,String,Option[Timestamp]) => Map[String,String] = ServerCommPosts.makeNewSessionPostContent;
+		val func: (Int,String,String,Option[Timestamp]) => Map[String,String] = ServerCommPosts.makeNewSessionPostMap;
 		val userId = 23543543;
 		val name = "Some Session";
 		val description = "Lorem ipsum.";
 		val timestamp = None;
 		val map = func(userId, name, description, timestamp)
-		assertEquals(3, map.size);
+				assertEquals(3, map.size);
 		assertEquals(userId.toString, map(USER_ID_STRING));
 		assertEquals(name, map(SESSION_NAME_STRING));
 		assertEquals(description, map(SESSION_DESCRIPTION_STRING));
@@ -61,14 +61,14 @@ class ServerCommPostsTest extends AssertionsForJUnit {
 		assertEquals(timestamp2.toString(), map2.get(TIMESTAMP_STRING).get);
 	}
 	@Test def testMakeNewExperimentPostContent() {
-		val func: (Int,String,Int,Int,Option[Timestamp]) => Map[String,String] = ServerCommPosts.makeNewExperimentPostContent;
+		val func: (Int,String,Int,Int,Option[Timestamp]) => Map[String,String] = ServerCommPosts.makeNewExperimentPostMap;
 		val sessionId = 25456;
 		val name = "Some Session";
 		val measurementAmount = 45;
 		val frequency = 2454;
 		val timestamp = None;
 		val map = func(sessionId, name, measurementAmount,frequency, timestamp)
-		assertEquals(4, map.size);
+				assertEquals(4, map.size);
 		assertEquals(sessionId.toString, map(SESSION_ID_STRING));
 		assertEquals(name, map(EXPERIMENT_NAME_STRING));
 		assertEquals(measurementAmount.toString, map(EXPERIMENT_MEASUREMENT_AMOUNT_STRING));
@@ -80,11 +80,11 @@ class ServerCommPostsTest extends AssertionsForJUnit {
 		assertEquals(timestamp2.toString(), map2.get(TIMESTAMP_STRING).get);
 	}
 	@Test def testMakeNewRunPostContent() {
-		val func: (Int,Option[Timestamp]) => Map[String,String] = ServerCommPosts.makeNewRunPostContent;
+		val func: (Int,Option[Timestamp]) => Map[String,String] = ServerCommPosts.makeNewRunPostMap;
 		val experimentId = 98454;
 		val timestamp = None;
 		val map = func(experimentId,timestamp)
-		assertEquals(1, map.size);
+				assertEquals(1, map.size);
 		assertEquals(experimentId.toString, map(EXPERIMENT_ID_STRING));
 		assertEquals(None, map.get(TIMESTAMP_STRING));
 		val timestamp2 = new Timestamp(4598459864598694856L);
@@ -93,13 +93,13 @@ class ServerCommPostsTest extends AssertionsForJUnit {
 		assertEquals(timestamp2.toString(), map2.get(TIMESTAMP_STRING).get);
 	}
 	@Test def testMakeNewMeasurementPostContent() {
-		val func: (Int,String,Double,Option[Timestamp]) => Map[String,String] = ServerCommPosts.makeNewMeasurementPostContent;
+		val func: (Int,String,Double,Option[Timestamp]) => Map[String,String] = ServerCommPosts.makeNewMeasurementPostMap;
 		val runId = 25456;
 		val typeOf = "Pressure";
 		val value = 2454;
 		val timestamp = None;
 		val map = func(runId, typeOf, value, timestamp)
-		assertEquals(3, map.size);
+				assertEquals(3, map.size);
 		assertEquals(runId.toString, map(RUN_ID_STRING));
 		assertEquals(typeOf, map(MEASUREMENT_TYPE_STRING));
 		assertEquals(value, map(MEASUREMENT_VALUE_STRING).toDouble, 0.000001);
