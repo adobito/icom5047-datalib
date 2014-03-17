@@ -5,7 +5,7 @@ import java.sql.Timestamp
 import org.scalatest.junit.AssertionsForJUnit
 import org.junit.Assert._
 
-class ServerCommPutsTests extends AssertionsForJUnit {
+class PutsTests extends AssertionsForJUnit {
 	private val SESSION_ID_STRING = "sessionId";
 	private val SESSION_NAME_STRING = "name";
 	private val SESSION_DESCRIPTION_STRING = "description";
@@ -13,7 +13,7 @@ class ServerCommPutsTests extends AssertionsForJUnit {
 	private val EXPERIMENT_NAME_STRING = "name";
 	
 	@Test def testMakeUpdateSessionPutsMap() {
-		val func: (Int,Option[String],Option[String]) => Map[String,String] = ServerCommPuts.makeUpdateSessionPutMap;
+		val func: (Int,Option[String],Option[String]) => Map[String,String] = Puts.makeUpdateSessionPutMap;
 		val sessionId = 2454334;
 		val name = "My Session";
 		val description = "My description string is this.";
@@ -30,7 +30,7 @@ class ServerCommPutsTests extends AssertionsForJUnit {
 		assertEquals(1, map4.size);
 	}
 	@Test def testMakeUpdateExperimentsPutsMap() {
-		val func: (Int,Option[String]) => Map[String,String] = ServerCommPuts.makeUpdateExperimentPutMap;
+		val func: (Int,Option[String]) => Map[String,String] = Puts.makeUpdateExperimentPutMap;
 		val experimentId = 97865;
 		val name = "My Session";
 		val map = func(experimentId, Some(name));

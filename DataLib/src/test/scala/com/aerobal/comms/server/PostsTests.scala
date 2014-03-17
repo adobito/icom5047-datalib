@@ -9,7 +9,7 @@ import org.scalatest.junit.AssertionsForJUnit
 import com.google.api.client.http.HttpContent
 import java.sql.Timestamp
 
-class ServerCommPostsTest extends AssertionsForJUnit {
+class PostsTest extends AssertionsForJUnit {
 	private val USER_USERNAME_STRING = "username";
 	private val USER_NAME_STRING = "name";
 	private val USER_EMAIL_STRING = "email";
@@ -30,7 +30,7 @@ class ServerCommPostsTest extends AssertionsForJUnit {
 	private val TIMESTAMP_STRING = "timestamp";
 
 	@Test def testMakeNewUserPostContent() {
-		val func: (String,String,String,String) => Map[String,String] = ServerCommPosts.makeNewUserPostMap;
+		val func: (String,String,String,String) => Map[String,String] = Posts.makeNewUserPostMap;
 		val username = "testname13432";
 		val name = "John Doe";
 		val email = "email@amd.er";
@@ -44,7 +44,7 @@ class ServerCommPostsTest extends AssertionsForJUnit {
 
 	}
 	@Test def testMakeNewSessionPostContent() {
-		val func: (Int,String,String,Option[Timestamp]) => Map[String,String] = ServerCommPosts.makeNewSessionPostMap;
+		val func: (Int,String,String,Option[Timestamp]) => Map[String,String] = Posts.makeNewSessionPostMap;
 		val userId = 23543543;
 		val name = "Some Session";
 		val description = "Lorem ipsum.";
@@ -61,7 +61,7 @@ class ServerCommPostsTest extends AssertionsForJUnit {
 		assertEquals(timestamp2.toString(), map2.get(TIMESTAMP_STRING).get);
 	}
 	@Test def testMakeNewExperimentPostContent() {
-		val func: (Int,String,Int,Int,Option[Timestamp]) => Map[String,String] = ServerCommPosts.makeNewExperimentPostMap;
+		val func: (Int,String,Int,Int,Option[Timestamp]) => Map[String,String] = Posts.makeNewExperimentPostMap;
 		val sessionId = 25456;
 		val name = "Some Session";
 		val measurementAmount = 45;
@@ -80,7 +80,7 @@ class ServerCommPostsTest extends AssertionsForJUnit {
 		assertEquals(timestamp2.toString(), map2.get(TIMESTAMP_STRING).get);
 	}
 	@Test def testMakeNewRunPostContent() {
-		val func: (Int,Option[Timestamp]) => Map[String,String] = ServerCommPosts.makeNewRunPostMap;
+		val func: (Int,Option[Timestamp]) => Map[String,String] = Posts.makeNewRunPostMap;
 		val experimentId = 98454;
 		val timestamp = None;
 		val map = func(experimentId,timestamp)
@@ -93,7 +93,7 @@ class ServerCommPostsTest extends AssertionsForJUnit {
 		assertEquals(timestamp2.toString(), map2.get(TIMESTAMP_STRING).get);
 	}
 	@Test def testMakeNewMeasurementPostContent() {
-		val func: (Int,String,Double,Option[Timestamp]) => Map[String,String] = ServerCommPosts.makeNewMeasurementPostMap;
+		val func: (Int,String,Double,Option[Timestamp]) => Map[String,String] = Posts.makeNewMeasurementPostMap;
 		val runId = 25456;
 		val typeOf = "Pressure";
 		val value = 2454;

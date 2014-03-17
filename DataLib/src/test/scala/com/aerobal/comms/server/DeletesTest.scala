@@ -1,34 +1,37 @@
 package com.aerobal.comms.server
 
-import org.junit.Test
-import org.junit.Assert._
-import org.scalatest.junit.AssertionsForJUnit
-import com.google.api.client.http.GenericUrl
 import scala.collection.mutable.HashMap
 
-class ServerCommDeletesTest extends AssertionsForJUnit {
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
+import org.junit.Test
+import org.scalatest.junit.AssertionsForJUnit
+
+import com.google.api.client.http.GenericUrl
+
+class DeletesTest extends AssertionsForJUnit {
 
 	@Test def testMakeDeleteURL() {
-	  		val route = "http://www.test.com/testroute";
+		val route = "http://www.test.com/testroute";
 		val params = HashMap[String,String]();
 		params("id") = "45";
 		params("name") = "testing";
 		params("other") = "234.5";
-		val url = ServerCommGets.makeGetURL(route, params.toMap[String,String]);
+		val url = Gets.makeGetURL(route, params.toMap[String,String]);
 		val split = url.toString().split("[?]");
 		assertEquals(route, split(0));
 		val paramSplit = split(1).split("&");
-		assertEquals(3,paramSplit.size);
+		assertEquals(3, paramSplit.size);
 		assertTrue(paramSplit.contains("id=45"));
 		assertTrue(paramSplit.contains("name=testing"));
 		assertTrue(paramSplit.contains("other=234.5"));
-		ServerCommDeletes.makeDeleteURL(route, params.toMap)
+		Deletes.makeDeleteURL(route, params.toMap)
 	}
 	@Test def testMakeSessionDeleteUrl() {
 		val route = "/route";
 		val host = "http://algo.io/";
 		val sessionId = 142534;
-		val url = ServerCommDeletes.makeDeleteSessionUrl(host, route, sessionId);
+		val url = Deletes.makeDeleteSessionUrl(host, route, sessionId);
 		val expected = new GenericUrl("http://algo.io/route?sessionId=" + sessionId);
 		assertEquals(expected, url);
 	}
@@ -36,7 +39,7 @@ class ServerCommDeletesTest extends AssertionsForJUnit {
 		val route = "/route";
 		val host = "http://algo.io/";
 		val experimentId = 345089;
-		val url = ServerCommDeletes.makeDeleteExperimentUrl(host, route, experimentId);
+		val url = Deletes.makeDeleteExperimentUrl(host, route, experimentId);
 		val expected = new GenericUrl("http://algo.io/route?experimentId=" + experimentId);
 		assertEquals(expected, url);
 	}
@@ -44,7 +47,7 @@ class ServerCommDeletesTest extends AssertionsForJUnit {
 		val route = "/route";
 		val host = "http://algo.io/";
 		val runId = 289734;
-		val url = ServerCommDeletes.makeDeleteRunUrl(host, route, runId);
+		val url = Deletes.makeDeleteRunUrl(host, route, runId);
 		val expected = new GenericUrl("http://algo.io/route?runId=" + runId);
 		assertEquals(expected, url);
 	}
