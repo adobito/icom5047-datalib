@@ -22,6 +22,11 @@ class ServerCommLibTest extends AssertionsForJUnit {
 		route = "someroute";
 		expectedUrl = "http://algo.rad.ed/someroute";
 		assertEquals(expectedUrl,ServerCommLib.makeFullRoute(host, route));
+		host = "localhost";
+		route = "datRoute";
+		expectedUrl = "http://localhost/datRoute";
+		assertEquals(expectedUrl,ServerCommLib.makeFullRoute(host, route));
+
 	}
 	@Test def testFromJson() {
 		val json = "{\"id\":1,\"username\":\"aloha23\",\"email\":\"somewhere@somewhere.com\",\"name\":\"John Smith\",\"isActive\":true}";

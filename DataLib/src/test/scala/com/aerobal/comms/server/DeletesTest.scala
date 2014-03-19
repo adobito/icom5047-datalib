@@ -2,8 +2,7 @@ package com.aerobal.comms.server
 
 import scala.collection.mutable.HashMap
 
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
+import org.junit.Assert._
 import org.junit.Test
 import org.scalatest.junit.AssertionsForJUnit
 
@@ -50,6 +49,10 @@ class DeletesTest extends AssertionsForJUnit {
 		val url = Deletes.makeDeleteRunUrl(host, route, runId);
 		val expected = new GenericUrl("http://algo.io/route?runId=" + runId);
 		assertEquals(expected, url);
+	}
+	@Test def testGetJsonBooleanResponse() {
+		assertTrue(Deletes.getJsonBooleanResponse("{\"confirm\":true}"));
+		assertFalse(Deletes.getJsonBooleanResponse("{\"confirm\":false}"));
 	}
 
 }
