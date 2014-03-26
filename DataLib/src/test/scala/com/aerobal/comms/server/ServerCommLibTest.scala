@@ -5,10 +5,8 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.scalatest.junit.AssertionsForJUnit
-
-import com.aerobal.data.objects.User
-
 import java.security.InvalidParameterException
+import com.aerobal.data.dto.User
 
 class ServerCommLibTest extends AssertionsForJUnit {
 

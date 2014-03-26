@@ -1,10 +1,12 @@
 package com.aerobal.comms.server
 
-import com.aerobal.data.objects._
+import scala.collection.mutable.HashMap
+
+import com.aerobal.data.objects.Experiment
+import com.aerobal.data.objects.Session
 import com.google.api.client.http.GenericUrl
 import com.google.api.client.http.HttpContent
-import scala.collection.mutable.ListMap
-import scala.collection.mutable.HashMap
+
 
 object Puts {
 

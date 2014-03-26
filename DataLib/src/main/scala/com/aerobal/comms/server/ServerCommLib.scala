@@ -1,17 +1,12 @@
 package com.aerobal.comms.server
 
-import com.aerobal.data.objects.Session
-import com.google.api.client.http.HttpRequest
-import com.google.api.client.http.javanet.NetHttpTransport
-import com.google.api.client.http.GenericUrl
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import java.sql.Timestamp
-import com.aerobal.data.objects.Stats
 import java.security.InvalidParameterException
-import com.google.api.client.json.jackson.JacksonFactory
-import com.google.api.client.http.json.JsonHttpContent
+
 import com.google.api.client.http.HttpContent
+import com.google.api.client.http.javanet.NetHttpTransport
+import com.google.api.client.http.json.JsonHttpContent
+import com.google.api.client.json.jackson.JacksonFactory
+import com.google.gson.Gson
 
 case object ServerCommLib {
 	private[server] val requestFactory = new NetHttpTransport().createRequestFactory();

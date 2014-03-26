@@ -1,9 +1,8 @@
 package com.aerobal.comms.server
 
-import com.aerobal.data.objects.Session
 import com.google.api.client.http.GenericUrl
 import com.google.api.client.http.javanet.NetHttpTransport
-import com.aerobal.data.objects._
+import com.aerobal.data.dto._
 
 object Gets {
 
