@@ -6,60 +6,60 @@ import com.aerobal.data.dto._
 
 object Gets {
 
-	def getUser(id: Int): User = {
+	def getUser(id: Int): UserDto = {
 			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_USER_ROUTE, makeUserGetMap(id));
 			val json = executeGetRequest(url);
-			ServerCommLib.fromJson(json,classOf[User]);
+			ServerCommLib.fromJson(json,classOf[UserDto]);
 	}
-	def getSession(id: Int): Session = {
+	def getSession(id: Int): SessionDto = {
 			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_SESSION_ROUTE, makeSessionGetMap(id));
 			val json = executeGetRequest(url);
-			ServerCommLib.fromJson(json,classOf[Session]);
+			ServerCommLib.fromJson(json,classOf[SessionDto]);
 	}
 	def getSessions(userId: Int): Sessions = {
 			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_MULTIPLE_SESSIONS_ROUTE, makeSessionsGetMap(userId));
 			val json = executeGetRequest(url);
 			ServerCommLib.fromJson(json,classOf[Sessions]);
 	}
-	def getExperiment(id: Int): Experiment = {
+	def getExperiment(id: Int): ExperimentDto = {
 			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_EXPERIMENT_ROUTE, makeExperimentGetMap(id));
 			val json = executeGetRequest(url);
-			ServerCommLib.fromJson(json,classOf[Experiment]);
+			ServerCommLib.fromJson(json,classOf[ExperimentDto]);
 	}
-	def getExperiments(sessionId: Int): Experiments = {
+	def getExperiments(sessionId: Int): ExperimentsDto = {
 			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_MULTIPLE_EXPERIMENTS_ROUTE, makeExperimentGetMap(sessionId));
 			val json = executeGetRequest(url);
-			ServerCommLib.fromJson(json,classOf[Experiments]);
+			ServerCommLib.fromJson(json,classOf[ExperimentsDto]);
 	}
-	def getRun(id: Int): Run = {
+	def getRun(id: Int): RunDto = {
 			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_RUN_ROUTE, makeRunGetMap(id));
 			val json = executeGetRequest(url);
-			ServerCommLib.fromJson(json,classOf[Run]);
+			ServerCommLib.fromJson(json,classOf[RunDto]);
 	}
-	def getRuns(experimentId: Int): Runs = {
+	def getRuns(experimentId: Int): RunsDto = {
 			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_MULTIPLE_RUNS_ROUTE, makeRunsGetMap(experimentId));
 			val json = executeGetRequest(url);
-			ServerCommLib.fromJson(json,classOf[Runs]);
+			ServerCommLib.fromJson(json,classOf[RunsDto]);
 	}
-	def getExperimentStats(experimentId: Int): Stats = {
+	def getExperimentStats(experimentId: Int): StatsDto = {
 			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_EXPERIMENT_STATS_ROUTE, makeExperimentStatsGetMap(experimentId));
 			val json = executeGetRequest(url);
-			ServerCommLib.fromJson(json,classOf[Stats]);
+			ServerCommLib.fromJson(json,classOf[StatsDto]);
 	}
-	def getRunStats(runId: Int): Stats = {
+	def getRunStats(runId: Int): StatsDto = {
 			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_RUN_STATS_ROUTE, makeRunStatsGetMap(runId));
 			val json = executeGetRequest(url);
-			ServerCommLib.fromJson(json,classOf[Stats]);
+			ServerCommLib.fromJson(json,classOf[StatsDto]);
 	}
-	def getMeasurement(id: Int): Measurement = {
+	def getMeasurement(id: Int): MeasurementDto = {
 			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_MEASUREMENT_ROUTE, makeMeasurementGetMap(id));
 			val json = executeGetRequest(url);
-			ServerCommLib.fromJson(json,classOf[Measurement]);
+			ServerCommLib.fromJson(json,classOf[MeasurementDto]);
 	}
-	def getMeasurements(runId: Int): Measurements = {
+	def getMeasurements(runId: Int): MeasurementsDto = {
 			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_MEASUREMENT_ROUTE, makeMeasurementsGetMap(runId));
 			val json = executeGetRequest(url);
-			ServerCommLib.fromJson(json,classOf[Measurements]);
+			ServerCommLib.fromJson(json,classOf[MeasurementsDto]);
 	}
 	def makeGetURL(route: String, params: Map[String,String]): GenericUrl = {
 			val sb = new StringBuilder;

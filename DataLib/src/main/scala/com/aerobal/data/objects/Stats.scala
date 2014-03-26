@@ -6,7 +6,7 @@ import java.security.InvalidParameterException
 import com.aerobal.data.objects.statTypes._
 import com.aerobal.data.objects.measurementTypes.MeasurementType
 
-case class Stats(val measurementType: MeasurementType){
+case class Stats(val measurementType: MeasurementType)  extends Serializable {
 	val stats = HashMap[StatType, Double]();
 	Stats.typeList.foreach(statType => stats(statType) = 0);
 	

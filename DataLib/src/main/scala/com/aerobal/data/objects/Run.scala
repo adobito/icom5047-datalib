@@ -7,7 +7,7 @@ import scala.collection.immutable.List
 import com.aerobal.data.objects.measurementTypes._
 import com.aerobal.data.objects.statTypes._
 
-case class Run(experiment: Experiment, timestamp: Option[Timestamp]) {
+case class Run(experiment: Experiment, timestamp: Option[Timestamp]) extends Serializable{
 	experiment.runs += this;
 	val measurements = ListBuffer[Measurement]();
 	

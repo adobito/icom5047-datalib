@@ -6,7 +6,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.scalatest.junit.AssertionsForJUnit
 import java.security.InvalidParameterException
-import com.aerobal.data.dto.User
+import com.aerobal.data.dto.UserDto
 
 class ServerCommLibTest extends AssertionsForJUnit {
 
@@ -28,7 +28,7 @@ class ServerCommLibTest extends AssertionsForJUnit {
 	}
 	@Test def testFromJson() {
 		val json = "{\"id\":1,\"username\":\"aloha23\",\"email\":\"somewhere@somewhere.com\",\"name\":\"John Smith\",\"isActive\":true}";
-		val user = ServerCommLib.fromJson(json, classOf[User]); 
+		val user = ServerCommLib.fromJson(json, classOf[UserDto]); 
 		assertEquals(1, user.id);
 		assertEquals("aloha23", user.username);
 		assertEquals("somewhere@somewhere.com", user.email);
