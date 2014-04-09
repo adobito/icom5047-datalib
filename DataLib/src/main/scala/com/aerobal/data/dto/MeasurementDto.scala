@@ -1,3 +1,14 @@
 package com.aerobal.data.dto
 
-case class MeasurementDto(id: Long, typeOf: String, value: Double) extends JSONifier 
+import scala.beans.BeanProperty
+import java.sql.Timestamp
+
+case class MeasurementDto(@BeanProperty var runId: Long, 
+    @BeanProperty var measurementTypeId: Integer,
+	@BeanProperty var value: Double) extends JSONifier {
+	@BeanProperty var id: Long = _;
+	@BeanProperty var timestamp: Timestamp = new Timestamp(System.currentTimeMillis());
+	def this() = {
+		this(-1, -1, -1)
+	}
+}

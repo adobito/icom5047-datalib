@@ -18,6 +18,7 @@ case class Run(experiment: Experiment, timestamp: Option[Timestamp]) extends Ser
 	  val values = ListBuffer[Double]();
 	  filteredList.foreach(measurement => values += measurement.value);
 	  stats(measurementType).recalculate(values.toList);
+	  experiment.recalculateStats(measurementType);
 	}
 	private def initMap() {
 	  Measurement.typeList.foreach(measurementType => stats(measurementType) = new Stats(measurementType))
