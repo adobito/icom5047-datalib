@@ -8,7 +8,7 @@ object Constants {
 	val USER_ID_STRING = "userId";
 	val SESSION_ID_STRING = "sessionId";
 	val SESSION_NAME_STRING = "name";
-	val SESSION_DESCRIPTION_STRING = "description";
+	val SESSION_DESCRIPTION_STRING = "desc";
 	val EXPERIMENT_ID_STRING = "experimentId";
 	val EXPERIMENT_NAME_STRING = "name";
 	val EXPERIMENT_DESCRIPTION_STRING = "description";

@@ -17,7 +17,7 @@ class PostsTest extends AssertionsForJUnit {
 	private val USER_ID_STRING = "userId";
 	private val SESSION_ID_STRING = "sessionId";
 	private val SESSION_NAME_STRING = "name";
-	private val SESSION_DESCRIPTION_STRING = "description";
+	private val SESSION_DESCRIPTION_STRING = "desc";
 	private val EXPERIMENT_ID_STRING = "experimentId";
 	private val EXPERIMENT_NAME_STRING = "name";
 	private val EXPERIMENT_DESCRIPTION_STRING = "description";

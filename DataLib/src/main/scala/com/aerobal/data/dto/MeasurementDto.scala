@@ -8,6 +8,7 @@ case class MeasurementDto(@BeanProperty var runId: Long,
 	@BeanProperty var value: Double) extends JSONifier {
 	@BeanProperty var id: Long = _;
 	@BeanProperty var timestamp: Timestamp = new Timestamp(System.currentTimeMillis());
+	@BeanProperty var isActive: Boolean = true;
 	def this() = {
 		this(-1, -1, -1)
 	}

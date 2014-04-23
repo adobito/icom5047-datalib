@@ -16,31 +16,31 @@ object Gets {
 			val json = executeGetRequest(url);
 			ServerCommLib.fromJson(json,classOf[SessionDto]);
 	}
-	def getSessions(userId: Int): Sessions = {
-			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_MULTIPLE_SESSIONS_ROUTE, makeSessionsGetMap(userId));
-			val json = executeGetRequest(url);
-			ServerCommLib.fromJson(json,classOf[Sessions]);
-	}
+//	def getSessions(userId: Int): Sessions = {
+//			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_MULTIPLE_SESSIONS_ROUTE, makeSessionsGetMap(userId));
+//			val json = executeGetRequest(url);
+//			ServerCommLib.fromJson(json,classOf[Sessions]);
+//	}
 	def getExperiment(id: Int): ExperimentDto = {
 			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_EXPERIMENT_ROUTE, makeExperimentGetMap(id));
 			val json = executeGetRequest(url);
 			ServerCommLib.fromJson(json,classOf[ExperimentDto]);
 	}
-	def getExperiments(sessionId: Int): ExperimentsDto = {
-			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_MULTIPLE_EXPERIMENTS_ROUTE, makeExperimentGetMap(sessionId));
-			val json = executeGetRequest(url);
-			ServerCommLib.fromJson(json,classOf[ExperimentsDto]);
-	}
+//	def getExperiments(sessionId: Int): ExperimentsDto = {
+//			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_MULTIPLE_EXPERIMENTS_ROUTE, makeExperimentGetMap(sessionId));
+//			val json = executeGetRequest(url);
+//			ServerCommLib.fromJson(json,classOf[ExperimentsDto]);
+//	}
 	def getRun(id: Int): RunDto = {
 			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_RUN_ROUTE, makeRunGetMap(id));
 			val json = executeGetRequest(url);
 			ServerCommLib.fromJson(json,classOf[RunDto]);
 	}
-	def getRuns(experimentId: Int): RunsDto = {
-			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_MULTIPLE_RUNS_ROUTE, makeRunsGetMap(experimentId));
-			val json = executeGetRequest(url);
-			ServerCommLib.fromJson(json,classOf[RunsDto]);
-	}
+//	def getRuns(experimentId: Int): RunsDto = {
+//			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_MULTIPLE_RUNS_ROUTE, makeRunsGetMap(experimentId));
+//			val json = executeGetRequest(url);
+//			ServerCommLib.fromJson(json,classOf[RunsDto]);
+//	}
 	def getExperimentStats(experimentId: Int): StatsDto = {
 			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_EXPERIMENT_STATS_ROUTE, makeExperimentStatsGetMap(experimentId));
 			val json = executeGetRequest(url);
@@ -56,11 +56,11 @@ object Gets {
 			val json = executeGetRequest(url);
 			ServerCommLib.fromJson(json,classOf[MeasurementDto]);
 	}
-	def getMeasurements(runId: Int): MeasurementsDto = {
-			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_MEASUREMENT_ROUTE, makeMeasurementsGetMap(runId));
-			val json = executeGetRequest(url);
-			ServerCommLib.fromJson(json,classOf[MeasurementsDto]);
-	}
+//	def getMeasurements(runId: Int): MeasurementsDto = {
+//			val url = makeGetURL(Constants.HOST_ADDRESS + Constants.GET_MEASUREMENT_ROUTE, makeMeasurementsGetMap(runId));
+//			val json = executeGetRequest(url);
+//			ServerCommLib.fromJson(json,classOf[MeasurementsDto]);
+//	}
 	def makeGetURL(route: String, params: Map[String,String]): GenericUrl = {
 			val sb = new StringBuilder;
 			sb ++= route;
@@ -71,7 +71,9 @@ object Gets {
 			new GenericUrl(sb.toString);
 	}
 	private def executeGetRequest(url: GenericUrl): String = {
-			ServerCommLib.requestFactory.buildGetRequest(url).execute().parseAsString();
+			val request = ServerCommLib.requestFactory.buildGetRequest(url);
+//			request.setContent(AuthKey)
+			request.execute().parseAsString();
 	}
 	private[server] def makeUserGetMap(id: Int): Map[String, String] = {
 			ServerCommLib.negativeCheck(id);

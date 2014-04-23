@@ -1,9 +1,7 @@
 package com.aerobal.comms.server
 
 import java.sql.Timestamp
-
 import scala.collection.mutable.HashMap
-
 import com.aerobal.data.objects.Experiment
 import com.aerobal.data.objects.Measurement
 import com.aerobal.data.objects.Run
@@ -11,6 +9,7 @@ import com.aerobal.data.objects.Session
 import com.aerobal.data.objects.User
 import com.google.api.client.http.GenericUrl
 import com.google.api.client.http.HttpContent
+import com.aerobal.data.dto.SessionDto
 
 
 object Posts {
@@ -23,13 +22,13 @@ object Posts {
 			val response = executePostRequest(url, content);
 			ServerCommLib.fromJson(response, classOf[User]);
 	}
-	def newSession(userId: Int, name: String, description: String, timestamp: Option[Timestamp]): Session = {
+	def newSession(userId: Int, name: String, description: String, timestamp: Option[Timestamp]): SessionDto = {
 			val map = makeNewSessionPostMap(userId, name, description, timestamp);
 			val urlString = ServerCommLib.makeFullRoute(Constants.HOST_ADDRESS, Constants.POST_NEW_SESSION_ROUTE);
 			val url = new GenericUrl(urlString);
 			val content = ServerCommLib.makeHttpContent(map);
 			val response = executePostRequest(url, content);
-			ServerCommLib.fromJson(response, classOf[Session]);
+			ServerCommLib.fromJson(response, classOf[SessionDto]);
 	}
 	def newExperiment(sessionId: Int, name: String, measurementAmount: Int, frequency: Int, timestamp: Option[Timestamp]): Experiment = {
 			val map = makeNewExperimentPostMap(sessionId, name, measurementAmount, frequency, timestamp);

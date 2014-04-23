@@ -1,12 +1,14 @@
 package com.aerobal.comms.server
 
 import java.security.InvalidParameterException
-
 import com.google.api.client.http.HttpContent
 import com.google.api.client.http.javanet.NetHttpTransport
 import com.google.api.client.http.json.JsonHttpContent
 import com.google.api.client.json.jackson.JacksonFactory
 import com.google.gson.Gson
+import com.sun.org.glassfish.gmbal.util.GenericConstructor
+import com.google.api.client.util.GenericData
+import com.google.api.client.http.UrlEncodedContent
 
 case object ServerCommLib {
 	private[server] val requestFactory = new NetHttpTransport().createRequestFactory();
@@ -37,7 +39,11 @@ case object ServerCommLib {
 
 
 	private[server] def makeHttpContent(map: Map[String,String]): HttpContent  = {
-	  new JsonHttpContent(JACKSON_FACTORY, map);	
+	  val generic = new GenericData();
+	  map.foreach( x => generic.put(x._1, x._2));
+	  val content = new UrlEncodedContent();
+	  content.setData(generic);
+	  content;	
 	}
 
 	private[server] def fromJson[T](json: String, classType: Class[T]): T = {

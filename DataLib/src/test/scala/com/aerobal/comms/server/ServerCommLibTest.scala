@@ -27,10 +27,9 @@ class ServerCommLibTest extends AssertionsForJUnit {
 
 	}
 	@Test def testFromJson() {
-		val json = "{\"id\":1,\"username\":\"aloha23\",\"email\":\"somewhere@somewhere.com\",\"name\":\"John Smith\",\"isActive\":true}";
+		val json = "{\"id\":1,\"email\":\"somewhere@somewhere.com\",\"name\":\"John Smith\",\"isActive\":true}";
 		val user = ServerCommLib.fromJson(json, classOf[UserDto]); 
 		assertEquals(1, user.id);
-		assertEquals("aloha23", user.username);
 		assertEquals("somewhere@somewhere.com", user.email);
 		assertEquals("John Smith", user.name);
 		assertEquals(true, user.isActive);
