@@ -2,6 +2,7 @@ package com.aerobal.data.dto
 
 import scala.beans.BeanProperty
 import java.sql.Timestamp
+import com.aerobal.data.serializers.JSONifier
 
 case class MeasurementDto(@BeanProperty var runId: Long, 
     @BeanProperty var measurementTypeId: Integer,

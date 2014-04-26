@@ -3,6 +3,7 @@ package com.aerobal.data.dto
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import scala.beans.BeanProperty
+import com.aerobal.data.serializers.JSONifier
 
 case class UserDto(
 		@BeanProperty var hash: String,
