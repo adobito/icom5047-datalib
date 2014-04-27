@@ -11,10 +11,13 @@ import com.google.gson.JsonSerializationContext
 import com.google.gson.JsonSerializer
 import com.google.gson.JsonDeserializationContext
 import java.sql.Timestamp
+import com.google.gson.Gson
 
 object ExperimentSerializer extends JsonSerializer[Experiment] //with JsonDeserializer[Experiment] 
 		{
-  val gson = GlobalGson.gson;
+	val gson = new GsonBuilder().
+  registerTypeAdapter(classOf[Run], RunSerializer).
+  create();
 	def serialize(src: Experiment, typeOfSrc: java.lang.reflect.Type,
 			context: JsonSerializationContext): JsonElement = {
 			val json = new JsonObject();
@@ -23,7 +26,7 @@ object ExperimentSerializer extends JsonSerializer[Experiment] //with JsonDeseri
 			val frequency = new JsonPrimitive(src.frequency);
 			val windSpeed = new JsonPrimitive(src.windSpeed);
 			val id = new JsonPrimitive(src.id);
-			val timestamp = gson.toJsonTree(src.timestamp);
+			val timestamp = gson.toJsonTree(src.timestamp,classOf[Timestamp]);
 			val runs = new JsonArray();
 			json.add("name", name)
 			json.add("runs",runs);
@@ -43,7 +46,7 @@ object ExperimentSerializer extends JsonSerializer[Experiment] //with JsonDeseri
 			val frequency = obj.getAsJsonPrimitive("frequency").getAsInt();
 			val windSpeed = obj.getAsJsonPrimitive("windSpeed").getAsDouble();
 			val id = obj.getAsJsonPrimitive("id").getAsLong();
-			val timestamp = gson.fromJson(obj.getAsJsonObject("timestamp"), classOf[Timestamp]);
+			val timestamp = gson.fromJson(obj.getAsJsonPrimitive("timestamp"), classOf[Timestamp]);
 			val runs = new JsonArray();
 			val experiment = new Experiment(name,amountOfValues,frequency,windSpeed);
 			experiment.id = id;

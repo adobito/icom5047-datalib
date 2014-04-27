@@ -21,16 +21,4 @@ case class Experiment(@BeanProperty var name: String,
 	  this.timestamp = experimentDto.timestamp;
 	}
 	val runs = ListBuffer[Run]();
-
-//	val stats: HashMap[MeasurementType,Stats] = HashMap[MeasurementType,Stats]();
-//	initMap();
-//	def recalculateStats(measurementType: MeasurementType) {
-////		val filteredList = runs.filter(measurement => measurement.typeOf.equals(measurementType));
-////		val values = ListBuffer[Double]();
-////		filteredList.foreach(measurement => values += measurement.value);
-////		stats(measurementType).recalculate(values.toList);
-//	}
-//	private def initMap() {
-//		Measurement.typeList.foreach(measurementType => stats(measurementType) = new Stats(measurementType))
-//	}
 }

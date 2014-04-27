@@ -1,7 +1,6 @@
 package com.aerobal.data.serializers
 
 import java.sql.Timestamp
-
 import com.aerobal.data.objects.Measurement
 import com.aerobal.data.objects.Run
 import com.google.gson.JsonArray
@@ -12,9 +11,13 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonPrimitive
 import com.google.gson.JsonSerializationContext
 import com.google.gson.JsonSerializer
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 
 object RunSerializer extends JsonSerializer[Run] with JsonDeserializer[Run]  {
-	val gson = GlobalGson.gson;
+	val gson  = new GsonBuilder().
+  registerTypeAdapter(classOf[Measurement], MeasurementSerializer).
+  create();
 	def serialize(src: Run, typeOfSrc: java.lang.reflect.Type,
 			context: JsonSerializationContext): JsonElement = {
 			val json = new JsonObject();
@@ -30,7 +33,7 @@ object RunSerializer extends JsonSerializer[Run] with JsonDeserializer[Run]  {
 	def deserialize(json: JsonElement, typeOfT: java.lang.reflect.Type, context: JsonDeserializationContext): Run = {
 			val obj =  json.getAsJsonObject();
 			val id = obj.getAsJsonPrimitive("id").getAsLong();
-			val timestamp = gson.fromJson(obj.getAsJsonObject("timestamp"), classOf[Timestamp]);
+			val timestamp = gson.fromJson(obj.getAsJsonPrimitive("timestamp"), classOf[Timestamp]);
 			val run = new Run();
 			run.id = id;
 			run.timestamp = timestamp;
