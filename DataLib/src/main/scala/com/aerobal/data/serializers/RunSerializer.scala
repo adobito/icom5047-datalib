@@ -35,6 +35,11 @@ object RunSerializer extends JsonSerializer[Run] with JsonDeserializer[Run]  {
 			val id = obj.getAsJsonPrimitive("id").getAsLong();
 			val timestamp = gson.fromJson(obj.getAsJsonPrimitive("timestamp"), classOf[Timestamp]);
 			val run = new Run();
+			val measurements = obj.getAsJsonArray("measurements");
+			val measurementIterator = measurements.iterator();
+			while(measurementIterator.hasNext()) {
+			  run.measurements.append(gson.fromJson(measurementIterator.next(), classOf[Measurement]));
+			}
 			run.id = id;
 			run.timestamp = timestamp;
 			run;
