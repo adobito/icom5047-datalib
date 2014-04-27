@@ -26,7 +26,6 @@ class DataProcessingTest extends AssertionsForJUnit {
 		assertEquals(77.345334, func(positiveList),0.00001);
 		assertEquals(0, func(zeroList),0.00001);
 		assertEquals(7, func(singleValueList),0.00001);
-		testWithEmptyList(func)
 		testWithNull(func)
 
 	}
@@ -38,7 +37,6 @@ class DataProcessingTest extends AssertionsForJUnit {
 		assertEquals(7, func(positiveList),0.00001);
 		assertEquals(0, func(zeroList),0.00001);
 		assertEquals(7, func(singleValueList),0.00001);
-		testWithEmptyList(func)
 		testWithNull(func)
 	}
 	@Test def testMean {
@@ -49,7 +47,6 @@ class DataProcessingTest extends AssertionsForJUnit {
 		assertEquals(31.32098, func(positiveList),0.00001);
 		assertEquals(0, func(zeroList),0.00001);
 		assertEquals(7, func(singleValueList),0.00001);
-		testWithEmptyList(func)
 		testWithNull(func)
 	}
 	@Test def testSum {
@@ -60,7 +57,6 @@ class DataProcessingTest extends AssertionsForJUnit {
 		assertEquals(219.2468828, func(positiveList),0.00001);
 		assertEquals(0, func(zeroList),0.00001);
 		assertEquals(7, func(singleValueList),0.00001);
-		testWithEmptyList(func)
 		testWithNull(func)
 	}
 	@Test def testMedian {
@@ -71,7 +67,6 @@ class DataProcessingTest extends AssertionsForJUnit {
 		assertEquals(23.54364565, func(positiveList),0.00001);
 		assertEquals(0, func(zeroList),0.00001);
 		assertEquals(7, func(singleValueList),0.00001);
-		testWithEmptyList(func)
 		testWithNull(func)
 	}
 	@Test def testStandardDeviation {
@@ -82,7 +77,6 @@ class DataProcessingTest extends AssertionsForJUnit {
 		assertEquals(24.8697, func(positiveList),0.00001);
 		assertEquals(0x	, func(zeroList),0.00001);
 		assertEquals(0, func(singleValueList),0.00001);
-		testWithEmptyList(func)
 		testWithNull(func)
 	}
 
