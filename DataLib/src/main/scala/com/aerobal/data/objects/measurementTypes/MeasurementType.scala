@@ -4,7 +4,7 @@ import scala.collection.immutable.HashMap
 
 trait MeasurementType {
 	def id: Int;
-override def toString: String;
+	override def toString: String;
 }
 object MeasurementTypes {
 	private val pressure = Pressure;
@@ -33,9 +33,9 @@ object MeasurementTypes {
 			windDirection.id -> windDirection,
 			windSpeed.id -> windSpeed);
 	def getType(typeOf: String): MeasurementType =  {
-		stringMap(typeOf);
+			stringMap(typeOf);
 	}
 	def getType(id: Int): MeasurementType = {
-	  idMap(id);
+			idMap(id);
 	}
 }
